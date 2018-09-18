@@ -65,3 +65,4 @@ venv.bak/
 #custom
 facts.json
 get_facts.py
+chatbot.py
