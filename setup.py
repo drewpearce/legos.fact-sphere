@@ -6,7 +6,7 @@ __author__ = "drewpearce <drew@caffdev.com>"
 __copyright__ = "Copyright 2018, Drew Pearce"
 
 description = 'Lego for getting a random "fact" from the Portal 2 Fact Sphere'
-name = 'legos.fact-sphere'
+name = 'legos.fact_sphere'
 setup(
     name=name,
     version='0.1.0',
