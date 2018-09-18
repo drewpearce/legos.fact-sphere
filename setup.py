@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+
+from setuptools import setup, find_packages
+
+__author__ = "drewpearce <drew@caffdev.com>"
+__copyright__ = "Copyright 2018, Drew Pearce"
+
+description = 'Lego for getting a random "fact" from the Portal 2 Fact Sphere'
+name = 'legos.fact-sphere'
+setup(
+    name=name,
+    version='0.1.0',
+    namespace_package=name.split('.')[:-1],
+    license='MIT',
+    description=description,
+    author='drewpearce',
+    url='https://github.com/Legobot/' + name,
+    install_requires=[
+        'legobot',
+        'pyyaml'
+    ],
+    classifiers=[
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3',
+        'Development Status :: 3 - Alpha'
+    ],
+    packages=find_packages()
+)
