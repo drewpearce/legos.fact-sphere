@@ -11,7 +11,7 @@ setup(
     name=name,
     version='0.1.0',
     namespace_package=name.split('.')[:-1],
-    license='MIT',
+    license='GPL3',
     description=description,
     author='drewpearce',
     url='https://github.com/Legobot/' + name,
@@ -20,7 +20,7 @@ setup(
         'pyyaml'
     ],
     classifiers=[
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: GPL 3',
         'Programming Language :: Python :: 3',
         'Development Status :: 3 - Alpha'
     ],
