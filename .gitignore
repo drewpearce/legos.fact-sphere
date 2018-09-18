@@ -61,3 +61,7 @@ venv.bak/
 
 # editor
 .vscode
+
+#custom
+facts.json
+get_facts.py
