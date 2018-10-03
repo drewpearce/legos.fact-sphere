@@ -25,5 +25,9 @@ setup(
         'Programming Language :: Python :: 3',
         'Development Status :: 3 - Alpha'
     ],
-    packages=find_packages()
+    packages=find_packages(),
+    package_data={
+        'legos': ['facts.yaml']
+    },
+    include_package_data=True
 )
