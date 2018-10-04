@@ -20,8 +20,9 @@ class FactSphere(Lego):
 
     def handle(self, message):
         opts = self.set_opts(message)
-        response = self._get_random_fact()
-        if response is not None:
+        fact = self._get_random_fact()
+        if fact is not None:
+            response = self._format_response(fact)
             self.reply(message, response, opts)
         else:
             logger.error('There was an issue handling the message.')
@@ -30,8 +31,7 @@ class FactSphere(Lego):
         facts = self._load_fact_data()
         if facts is not None:
             fact = random.choice(facts['facts'])
-            response = self._format_response(fact)
-            return response
+            return fact
         else:
             return None
 
@@ -41,7 +41,8 @@ class FactSphere(Lego):
         return response
 
     def _load_fact_data(self):
-        fact_file = os.getcwd() + '/facts.yaml'
+        path = os.path.dirname(__file__)
+        fact_file = path + '/facts.yaml'
         try:
             with open(fact_file, 'r') as f:
                 facts = yaml.load(f)
@@ -55,12 +56,12 @@ class FactSphere(Lego):
             target = message['metadata']['source_channel']
             opts = {'target': target}
             return opts
-        except IndexError:
-            logger.error(('Cloud not identify message source in '
-                         'message: {}'.format(message)))
+        except Exception as e:
+            logger.error(('Could not identify message source in '
+                         'message. Error: {}'.format(e)))
 
     def get_name(self):
-        return 'fact-sphere'
+        return 'fact_sphere'
 
     def get_help(self):
-        return '!fact to return a random fact-sphere fact.'
+        return '!fact to return a random Fact Sphere fact.'
