@@ -10,7 +10,7 @@ description = 'Lego for getting a random "fact" from the Portal 2 Fact Sphere'
 name = 'legos.fact_sphere'
 setup(
     name=name,
-    version='0.1.0',
+    version='0.1.1',
     namespace_package=name.split('.')[:-1],
     license='GPL3',
     description=description,
@@ -21,7 +21,7 @@ setup(
         'pyyaml'
     ],
     classifiers=[
-        'License :: OSI Approved :: GPL 3',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Programming Language :: Python :: 3',
         'Development Status :: 3 - Alpha'
     ],
