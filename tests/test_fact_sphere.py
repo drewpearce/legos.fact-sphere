@@ -1,6 +1,5 @@
 from Legobot.Lego import Lego
 import os
-import pytest
 import sys
 import threading
 
