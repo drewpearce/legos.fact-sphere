@@ -1,0 +1,19 @@
+language: python
+python:
+- '3.5'
+install:
+- pip install -r requirements.txt
+script:
+- bandit -r .
+- flake8 .
+- pytest
+deploy:
+  provider: pypi
+  user: drewpearce
+  password:
+    secure: T+Udk74SSvmu6hfFUvwkfPcGM6VMVl96pETc1GRmTBu9XxPqiF2HLNPUOrPScc3/4zsmXQw22GlAGluTnQlghVhimSGvvep1onBzlRbuDrIpEv2Biq8iVHitst7JapwaCyiG3POfslrnQqGE+QZaHWcPSBa+Olw7ZS/XOTlJP3iVEym1J4IAz/ZSvcKiAch/U+GSoB3oQUtq4w4CjrMsjb5zl8Hh7u0TOtsMe50hJAM+3/UfwVnFRqNBsFF23IvEoFQQkJWumbm4TlLiI+lp50MjkM1QLPqS1OzoHUPHWmFzLg7zBbo8TbVQ+g6sH3gRD5+Pbp9XjNc0dhiSbmbplIsordo8yGAssVZMlXCBTAwyf+VQq0gr1/0U11pMBOQv8AIlxu2zI8BKwB0yen6O4YYfKBZouOrRorR/L3fz1/UUyqlQ5c5sNQro5vpPBINKrpGqGqPNCMtBv2YelWrBxD96+//1Z12L1ocbgAbF2L9yAXhUkZmJK1Q0WtrtiVzjGiCbsUKqpXDwG7DusxR7cE+rpRsMzTtQM9xhh+1LwGAsCuf24YeMpJ97896w9MefwtSYidJDwv58Yua63BgXUyoPRRZZB5pWiQ7Y5qzcXM3y2cDjoZgA7AQB6sr+zXECWtK/laS9H2EdlVAwgdJ4UQm7y5N3Qj83UjD/b8EeV2o=
+  on:
+    tags: true
+    distributions: sdist bdist_wheel
+    branch: master
+    repo: drewpearce/legos.fact_sphere
