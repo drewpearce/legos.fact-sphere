@@ -30,7 +30,7 @@ class FactSphere(Lego):
     def _get_random_fact(self):
         facts = self._load_fact_data()
         if facts is not None:
-            fact = random.choice(facts['facts'])
+            fact = random.choice(facts['facts'])  # nosec
             return fact
         else:
             return None
@@ -45,7 +45,7 @@ class FactSphere(Lego):
         fact_file = path + '/facts.yaml'
         try:
             with open(fact_file, 'r') as f:
-                facts = yaml.load(f)
+                facts = yaml.safe_load(f)
             return facts
         except Exception as e:
             logger.error('Error loading facts file: {}'.format(e))
