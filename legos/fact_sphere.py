@@ -8,6 +8,10 @@ logger = logging.getLogger(__name__)
 
 
 class FactSphere(Lego):
+    def __init__(self, baseplate, lock, *args, **kwargs):
+        super().__init__(baseplate, lock)
+        self.categories = self._get_categories()
+
     def listening_for(self, message):
         if message.get('text'):
             try:
@@ -20,17 +24,36 @@ class FactSphere(Lego):
 
     def handle(self, message):
         opts = self.set_opts(message)
-        fact = self._get_random_fact()
+        category = None
+        if len(message['text'].split(' ')) > 1:
+            category = message['text'].split(' ')[1]
+        fact = self._get_random_fact(category=category)
         if fact is not None:
             response = self._format_response(fact)
             self.reply(message, response, opts)
         else:
             logger.error('There was an issue handling the message.')
 
-    def _get_random_fact(self):
+    def _get_categories(self):
         facts = self._load_fact_data()
+        if not facts:
+            return None
+        categories = list(set([fact['category'] for fact in facts['facts']]))
+        return categories
+
+    def _get_random_fact(self, category=None):
+        facts = self._load_fact_data()
+        if facts:
+            facts = facts['facts']
+        else:
+            return None
+
+        if category:
+            if category in self.categories:
+                facts = [fact for fact in facts
+                         if fact['category'] == category]
         if facts is not None:
-            fact = random.choice(facts['facts'])  # nosec
+            fact = random.choice(facts)  # nosec
             return fact
         else:
             return None
@@ -64,4 +87,7 @@ class FactSphere(Lego):
         return 'fact_sphere'
 
     def get_help(self):
-        return '!fact to return a random Fact Sphere fact.'
+        return ('Return a random Fact Sphere fact. Usage: !fact '
+                '[category_name].\nValid categories: {}').format(
+                    ', '.join(self.categories)
+                )

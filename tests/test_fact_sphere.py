@@ -1,5 +1,6 @@
 from Legobot.Lego import Lego
 import os
+import random
 import sys
 import threading
 
@@ -34,7 +35,9 @@ def test_get_name():
 
 
 def test_get_help():
-    assert LEGO.get_help() == '!fact to return a random Fact Sphere fact.'
+    test_text = ('Return a random Fact Sphere fact. Usage: !fact '
+                 '[category_name].\nValid categories:')
+    assert test_text in LEGO.get_help()
 
 
 def test_set_opts(caplog):
@@ -74,8 +77,29 @@ def test_load_fact_data():
         assert fact.get('audio')
 
 
+def test_get_categories():
+    categories = [
+        'true',
+        'non',
+        'nearly_true',
+        'partially_true',
+        'false',
+        'subjective_or_unverifiable',
+        'probably_false'
+    ]
+    get_categories = LEGO._get_categories()
+    assert sorted(categories) == sorted(get_categories)
+
+
 def test_get_random_fact():
     fact = LEGO._get_random_fact()
+    assert fact
+    assert isinstance(fact, dict)
+    assert fact.get('fact')
+    assert fact.get('audio')
+
+    category = random.choice(LEGO._get_categories())  # nosec
+    fact = LEGO._get_random_fact(category=category)
     assert fact
     assert isinstance(fact, dict)
     assert fact.get('fact')
