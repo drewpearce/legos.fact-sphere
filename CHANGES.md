@@ -3,11 +3,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.2.0] 2018-10-10
+## [0.2.1] 2018-10-10
 #### Added
 - can now get random fact by category
 - more tests
 - changelog
+
+#### Fixed
+- Travis issues require bump
   
 #### Updated
 - updated help text
