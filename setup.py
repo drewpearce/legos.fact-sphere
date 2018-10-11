@@ -1,13 +1,7 @@
 #!/usr/bin/env python
 
-import os
 from setuptools import find_packages
 from setuptools import setup
-
-
-def read(fname):
-    with open(os.path.join(os.path.dirname(__file__), fname), 'r') as f:
-        return f.read()
 
 
 __author__ = "drewpearce <drew@caffdev.com>"
@@ -21,7 +15,6 @@ setup(
     namespace_package=name.split('.')[:-1],
     license='GPL3',
     description=description,
-    long_description=read('README.md'),
     author='drewpearce',
     url='https://github.com/Legobot/' + name,
     install_requires=[
