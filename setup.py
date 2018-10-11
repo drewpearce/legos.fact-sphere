@@ -11,7 +11,7 @@ description = 'Lego for getting a random "fact" from the Portal 2 Fact Sphere'
 name = 'legos.fact_sphere'
 setup(
     name=name,
-    version='0.2.0',
+    version='0.2.1',
     namespace_package=name.split('.')[:-1],
     license='GPL3',
     description=description,
