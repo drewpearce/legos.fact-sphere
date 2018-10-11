@@ -3,14 +3,19 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.2.2] 2018-10-11
+#### Added
+- Manifest.in
+- setup.cfg
+
+#### Fixed
+- deployments include yaml facts file (for real this time)
+
 ## [0.2.1] 2018-10-10
 #### Added
 - can now get random fact by category
 - more tests
 - changelog
-
-#### Fixed
-- Travis issues require bump
   
 #### Updated
 - updated help text
